@@ -376,13 +376,37 @@ section {
 .experience-item .company {
     font-weight: 600;
     color: var(--text-color);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
+    font-size: 1rem;
+    /* allow long organization names to wrap nicely */
+    word-break: break-word;
 }
 
 .experience-item .duration {
     color: var(--secondary-color);
     font-size: 0.95rem;
     font-weight: 500;
+    /* keep duration aligned to the right on larger screens */
+    white-space: nowrap;
+    margin-left: 1rem;
+}
+
+/* Make the left side take remaining space so long names don't push the duration down */
+.experience-item .job-header > div:first-child {
+    flex: 1 1 70%;
+    min-width: 200px;
+}
+
+@media (max-width: 700px) {
+    .experience-item .job-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .experience-item .duration {
+        margin-left: 0;
+        text-align: left;
+    }
 }
 
 .experience-item ul {
